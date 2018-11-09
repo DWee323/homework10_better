@@ -145,13 +145,17 @@ const search_input = (event) => {
         .then(get_weather_current)
 
     let URL_forecast = `http://api.openweathermap.org/data/2.5/forecast?q=${user_input}&APPID=25bc90a1196e6f153eece0bc0b0fc9eb`; 
-
+    
+    for (let i=1; i<6; i++){
+        let get = "get_weather_forecast_"+i;
+        console.log(get);
     fetch(URL_forecast) 
         .then((response) => {
             return response.json();
         })
-        .then(get_weather_forecast_1)
-
+        .then(get);
+    }
+/*
     fetch(URL_forecast) 
         .then((response) => {
             return response.json();
@@ -175,6 +179,13 @@ const search_input = (event) => {
             return response.json();
         }) 
         .then(get_weather_forecast_5)
+        */
 };
-
+/*
+const fetch_loop = (i) => {
+    for (let i=0; i<5; i++){
+        let get = "get_weather_forecast_"+i;
+    }
+};
+*/
 city_search.addEventListener("change", search_input);
